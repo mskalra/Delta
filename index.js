@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 var envvar = require('envvar');
 var express = require('express');
@@ -6,10 +7,10 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var plaid = require('plaid');
 
-var APP_PORT = envvar.number('APP_PORT', 8000);
-var PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID');
-var PLAID_SECRET = envvar.string('PLAID_SECRET');
-var PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY');
+var APP_PORT = envvar.number('APP_PORT', 80);
+var PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID;
+var PLAID_SECRET = process.env.PLAID_SECRET;
+var PLAID_PUBLIC_KEY = process.env.PLAID_PUBLIC_KEY;
 var PLAID_ENV = envvar.string('PLAID_ENV', 'sandbox');
 
 // We store the access_token in memory - in production, store it in a secure
